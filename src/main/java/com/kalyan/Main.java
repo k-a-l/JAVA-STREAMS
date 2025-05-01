@@ -1,17 +1,30 @@
 package com.kalyan;
 
+import com.kalyan.optional.OptionalExamples;
+import com.kalyan.service.UserService;
+import com.kalyan.stream.UserStream;
+import com.kalyan.user.User;
+
+import java.util.List;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
+public class Main{
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        UserService userService = new UserService();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        UserStream streamObj = new UserStream();
+        OptionalExamples  optionalExamples = new OptionalExamples();
+
+        List<User> users = streamObj.getUsers();
+        users.stream().map(u->"Name " + u.getName() +
+                "City "+u.getAddress().getCity()).forEach(System.out::println);
+        System.out.println("-----------------------/n");
+
+        streamObj.getNamesByCity("Lalitpur").forEach(System.out::println);
+
+        streamObj.getUserByNameAndCity("Bob","Lalitpur").stream().forEach(System.out::println);
+
+
     }
 }

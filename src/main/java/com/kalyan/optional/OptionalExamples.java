@@ -27,7 +27,7 @@ public class OptionalExamples {
     public Optional<User> getUserByAddress(Address address){
         UserService userService = new UserService();
         List<User> users = userService.getUsers();
-        return users.stream().filter(u->u.getAddress().getCity().equals(address)).findFirst();
+        return users.stream().filter(u->u.getAddress().equals(address)).findFirst();
     }
 
 }

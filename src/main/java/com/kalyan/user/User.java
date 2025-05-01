@@ -10,6 +10,9 @@ public class User {
     private String email;
     private Address address;
 
+    public User() {
+    }
+
     public User(UUID id, String name, String email, Address address) {
         this.id = id;
         this.name = name;
